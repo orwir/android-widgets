@@ -15,20 +15,25 @@ buildscript {
     }
 }
 
+plugins {
+    id "com.jfrog.bintray" version "1.7.3"
+}
+
 ext.app = [
         compileSdkVersion : 23,
         buildToolsVersion : '25.0.1',
         minSdkVersion     : 17,
         targetSdkVersion  : 23,
         versionCode       : 1,
-        versionName       : '1.0.0.0',
+        versionName       : '1.0.0',
         applicationId     : 'orwir.widget.example'
 ]
+
+ext.bcred = loadBintrayCredentials()
 
 allprojects {
     repositories {
         jcenter()
-        //mavenCentral()
     }
 }
 
@@ -128,3 +133,51 @@ ext.lib = [
         ],
         junit                   : "junit:junit:$version.junit"
 ]
+
+def publishedProjects = ['expandable']
+configure(allprojects.findAll {publishedProjects.contains(it.name)}) {
+
+    evaluationDependsOn(':' + project.name)
+
+    //apply plugin: 'com.jfrog.bintray'
+
+    group = 'orwir.android.widget'
+    version = app.versionName
+
+    bintray {
+        user = bcred.user
+        key = bcred.key
+        configurations = ['archives']
+        publish = false
+
+        pkg {
+            repo = 'maven'
+            name = 'android-widgets'
+            desc = 'Just another common widgets'
+            websiteUrl = 'https://github.com/orwir/android-widgets'
+            issueTrackerUrl = 'https://github.com/orwir/android-widgets/issues'
+            vcsUrl = 'https://github.com/orwir/android-widgets.git'
+            licenses = ['Apache-2.0']
+            labels = ['widget', 'android', 'ui']
+            publicDownloadNumbers = true
+        }
+    }
+
+}
+
+def loadBintrayCredentials() {
+    File local = file('bintray.properties')
+    if(local.exists()) {
+        Properties props = new Properties()
+        props.load(new FileInputStream(local))
+        return [
+                user : props['bintray.user'],
+                key  : props['bintray.key']
+        ]
+    } else {
+        return [
+                user : System.getenv('bintray_user'),
+                key  : System.getenv('bintray_key')
+        ]
+    }
+}
