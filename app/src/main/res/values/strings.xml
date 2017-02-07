@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Android Widgets</string>
+    <string name="hint_text">Just a main activity. Open the menu for examples</string>
+    <string name="main_activity">Main</string>
+    <string name="expandable_layout_activity">Expandable Layout</string>
+    <string name="expandable_block_1">First Expandable block</string>
+    <string name="expandable_block_2">Second Expandable block</string>
+    <string name="expandable_block_3">Third Expandable block</string>
+    <string name="enable_single_expanded">Enable single expanded</string>
+</resources>

@@ -1,0 +1,51 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath lib.retrolambda
+    }
+}
+
+apply plugin: 'com.android.application'
+apply plugin: 'me.tatarka.retrolambda'
+
+android {
+    defaultConfig {
+        applicationId app.applicationId
+        minSdkVersion app.minSdkVersion
+        targetSdkVersion app.targetSdkVersion
+        versionCode app.versionCode
+        versionName app.versionName
+        multiDexEnabled true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    annotationProcessor lib.butterKnifeCompiler
+
+    compile project(':expandable')
+
+    compile lib.supportAppCompatV7
+    compile lib.supportDesign
+    compile lib.supportRecyclerViewV7
+    compile lib.supportCardViewV7
+
+    compile lib.rxAndroid
+    compile lib.rxLifecycle
+    compile lib.rxLifecycleAndroid
+    compile lib.rxLifecycleComponents
+    compile lib.butterKnife
+    compile lib.picasso
+    compile (lib.materialDrawer) {
+        transitive = true
+    }
+}
