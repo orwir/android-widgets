@@ -36,7 +36,7 @@ def version = [
         retrolambda    : '3.4.0',
 
         //google
-        support        : '25.0.0',
+        support        : '25.0.1',
 
         //network
         okhttp         : '3.4.2',
