@@ -1,22 +1,16 @@
-import com.android.build.gradle.AppPlugin
-import com.android.build.gradle.LibraryPlugin
-
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
     repositories {
         jcenter()
+        mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.2.3'
+        classpath 'com.android.tools.build:gradle:2.3.0-beta3'
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
-}
-
-plugins {
-    id "com.jfrog.bintray" version "1.7.3"
 }
 
 ext.app = [
@@ -26,35 +20,15 @@ ext.app = [
         targetSdkVersion  : 23,
         versionCode       : 1,
         versionName       : '1.0.0',
-        applicationId     : 'orwir.widget.example'
+        applicationId     : 'orwir.widget.example',
+        groupId           : 'orwir.android.widget',
+        url               : 'https://github.com/orwir/android-widgets'
 ]
-
-ext.bcred = loadBintrayCredentials()
 
 allprojects {
     repositories {
         jcenter()
     }
-}
-
-subprojects {
-    afterEvaluate { Project project ->
-        if (project.plugins.withType(AppPlugin) || project.plugins.withType(LibraryPlugin)) {
-            android {
-                compileSdkVersion app.compileSdkVersion
-                buildToolsVersion app.buildToolsVersion
-
-                compileOptions {
-                    sourceCompatibility JavaVersion.VERSION_1_8
-                    targetCompatibility JavaVersion.VERSION_1_8
-                }
-            }
-        }
-    }
-}
-
-task clean(type: Delete) {
-    delete rootProject.buildDir
 }
 
 def version = [
@@ -134,50 +108,6 @@ ext.lib = [
         junit                   : "junit:junit:$version.junit"
 ]
 
-def publishedProjects = ['expandable']
-configure(allprojects.findAll {publishedProjects.contains(it.name)}) {
-
-    evaluationDependsOn(':' + project.name)
-
-    //apply plugin: 'com.jfrog.bintray'
-
-    group = 'orwir.android.widget'
-    version = app.versionName
-
-    bintray {
-        user = bcred.user
-        key = bcred.key
-        configurations = ['archives']
-        publish = false
-
-        pkg {
-            repo = 'maven'
-            name = 'android-widgets'
-            desc = 'Just another common widgets'
-            websiteUrl = 'https://github.com/orwir/android-widgets'
-            issueTrackerUrl = 'https://github.com/orwir/android-widgets/issues'
-            vcsUrl = 'https://github.com/orwir/android-widgets.git'
-            licenses = ['Apache-2.0']
-            labels = ['widget', 'android', 'ui']
-            publicDownloadNumbers = true
-        }
-    }
-
-}
-
-def loadBintrayCredentials() {
-    File local = file('bintray.properties')
-    if(local.exists()) {
-        Properties props = new Properties()
-        props.load(new FileInputStream(local))
-        return [
-                user : props['bintray.user'],
-                key  : props['bintray.key']
-        ]
-    } else {
-        return [
-                user : System.getenv('bintray_user'),
-                key  : System.getenv('bintray_key')
-        ]
-    }
+task clean(type: Delete) {
+    delete rootProject.buildDir
 }

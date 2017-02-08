@@ -8,11 +8,21 @@ buildscript {
     }
 }
 
+plugins {
+    id "com.jfrog.bintray" version "1.7.3"
+    id "com.github.dcendents.android-maven" version "1.5"
+}
+apply plugin: 'maven-publish'
 apply plugin: 'com.android.library'
 apply plugin: 'me.tatarka.retrolambda'
 
+description '''\
+Rx-based expandable FrameLayout.\
+'''
+
 android {
-    publishNonDefault true
+    compileSdkVersion app.compileSdkVersion
+    buildToolsVersion app.buildToolsVersion
 
     defaultConfig {
         minSdkVersion app.minSdkVersion
@@ -26,6 +36,11 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 
@@ -43,3 +58,5 @@ dependencies {
     compile lib.butterKnife
     compile lib.picasso
 }
+
+apply from: "$rootDir/publishing.gradle"
