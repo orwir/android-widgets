@@ -1,0 +1,95 @@
+
+group = app.groupId
+version = app.versionName
+
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+
+task javadoc(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+    failOnError false
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+def pomConfig = {
+    licenses {
+        license {
+            name 'The Apache Software License, Version 2.0'
+            url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+        }
+    }
+
+    developers {
+        developer {
+            id 'orwir'
+            name 'Igor Zubenko'
+            email 'igor.a.zubenko@gmail.com'
+        }
+    }
+}
+
+publishing {
+    publications {
+        archives(MavenPublication) {
+            groupId app.groupId
+            artifactId project.name
+            version app.versionName
+            description project.description
+            artifact(sourcesJar)
+            artifact("$buildDir/outputs/aar/$project.name-release.aar")
+            pom.withXml {
+                def root = asNode()
+                root.appendNode('name', project.name)
+                root.appendNode('description', project.description)
+                root.appendNode('url', app.url)
+                root.children().last() + pomConfig
+            }
+        }
+    }
+}
+
+def bcred = loadBintrayCredentials()
+
+bintray {
+    user = bcred.user
+    key = bcred.key
+    publications = ['archives']
+    publish = true
+    override = true
+
+    pkg {
+        repo = 'maven'
+        name = 'android-widgets'
+        desc = 'Just another common widgets'
+        websiteUrl = 'https://github.com/orwir/android-widgets'
+        issueTrackerUrl = 'https://github.com/orwir/android-widgets/issues'
+        vcsUrl = 'https://github.com/orwir/android-widgets.git'
+        licenses = ['Apache-2.0']
+        labels = ['widget', 'android', 'ui']
+        publicDownloadNumbers = true
+    }
+}
+
+def loadBintrayCredentials() {
+    File local = file('bintray.properties')
+    if(local.exists()) {
+        Properties props = new Properties()
+        props.load(new FileInputStream(local))
+        return [
+                user : props['bintray.user'],
+                key  : props['bintray.key']
+        ]
+    } else {
+        return [
+                user : System.getenv('bintray_user'),
+                key  : System.getenv('bintray_key')
+        ]
+    }
+}

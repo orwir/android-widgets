@@ -10,6 +10,7 @@ import android.support.annotation.DrawableRes;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.annotation.StringRes;
 import android.support.annotation.StyleRes;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -42,9 +43,9 @@ public class ExpandableLayout extends FrameLayout {
         return Observable.merge(transform(layouts, ExpandableLayout::expandedEvent))
                 .compose(context.bindUntilEvent(ActivityEvent.DESTROY))
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(event -> {
+                .subscribe(view -> {
                     for (ExpandableLayout layout : layouts) {
-                        if (layout != event.view) {
+                        if (layout != view) {
                             layout.setState(false);
                         }
                     }
@@ -76,28 +77,32 @@ public class ExpandableLayout extends FrameLayout {
     @NonNull protected Drawable iconExpand;
     @NonNull protected Drawable iconCollapse;
     @NonNull protected ViewGroup content;
-
+    private boolean initialized;
     private final BehaviorSubject<Boolean> expandSubject = BehaviorSubject.create();
 
     public ExpandableLayout(@NonNull Context context) {
         super(context);
         initialize(context, null);
+        checkInitialization();
     }
 
     public ExpandableLayout(@NonNull Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         initialize(context, attrs);
+        checkInitialization();
     }
 
     public ExpandableLayout(@NonNull Context context, @Nullable AttributeSet attrs, @AttrRes int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         initialize(context, attrs);
+        checkInitialization();
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public ExpandableLayout(@NonNull Context context, @Nullable AttributeSet attrs, @AttrRes int defStyleAttr, @StyleRes int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         initialize(context, attrs);
+        checkInitialization();
     }
 
     public ViewGroup getHeader() {
@@ -106,6 +111,14 @@ public class ExpandableLayout extends FrameLayout {
 
     public ViewGroup getContent() {
         return content;
+    }
+
+    public void setTitle(@Nullable String text) {
+        title.setText(text);
+    }
+
+    public void setTitle(@StringRes int textRes) {
+        title.setText(textRes);
     }
 
     public void toggle() {
@@ -187,6 +200,7 @@ public class ExpandableLayout extends FrameLayout {
         addView(content);
 
         setState(expanded);
+        initialized = true;
     }
 
     private Drawable getDrawable(Context context, @DrawableRes int drawableResId) {
@@ -197,20 +211,14 @@ public class ExpandableLayout extends FrameLayout {
         }
     }
 
-    private Observable<Event> expandedEvent() {
-        return expandSubject.distinctUntilChanged().filter(Boolean.TRUE::equals).map(expanded -> new Event(this, expanded));
+    private Observable<ExpandableLayout> expandedEvent() {
+        return expandSubject.distinctUntilChanged().filter(Boolean.TRUE::equals).map(expanded -> this);
     }
 
-    private class Event {
-
-        final ExpandableLayout view;
-        final boolean expanded;
-
-        Event(ExpandableLayout view, boolean expanded) {
-            this.view = view;
-            this.expanded = expanded;
+    private void checkInitialization() {
+        if (!initialized) {
+            throw new IllegalStateException("If you override initialize do not forget invoke super.initialize first");
         }
-
     }
 
 }
