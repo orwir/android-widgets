@@ -28,3 +28,4 @@ compile 'orwir.android.widget:expandable:latest_version'
 ```
 [Example layout](https://github.com/orwir/android-widgets/blob/master/app/src/main/res/layout/activity_expandable_layout.xml) and 
 [enable/disable single expanded func](https://github.com/orwir/android-widgets/blob/master/app/src/main/java/orwir/widget/example/ExpandableLayoutActivity.java#L48)
+
