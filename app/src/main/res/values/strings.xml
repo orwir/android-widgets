@@ -7,4 +7,10 @@
     <string name="expandable_block_2">Second Expandable block</string>
     <string name="expandable_block_3">Third Expandable block</string>
     <string name="enable_single_expanded">Enable single expanded</string>
+
+    <string name="stretchable_text_activity">Stretchable TextView</string>
+    <string name="text_view">TextView</string>
+    <string name="stretchable_text_view">Custom StretchableTextView</string>
+    <string name="long_text_example">01234567890123456789</string>
+
 </resources>
