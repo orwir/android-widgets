@@ -23,6 +23,10 @@
             android:label="@string/expandable_layout_activity"
             android:parentActivityName=".MainActivity"/>
 
+        <activity android:name=".StretchableTextActivity"
+                  android:label="@string/stretchable_text_activity"
+                  android:parentActivityName=".StretchableTextActivity"/>
+
     </application>
 
 </manifest>
