@@ -1,4 +1,4 @@
-package orwir.widget.stretch;
+package orwir.widget.adjust;
 
 import android.content.Context;
 import android.graphics.Paint;
@@ -7,21 +7,21 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 
-public class StretchableTextView extends android.support.v7.widget.AppCompatTextView {
+public class AdjustableTextView extends android.support.v7.widget.AppCompatTextView {
 
     private Paint testPaint = new Paint();
 
-    public StretchableTextView(Context context) {
+    public AdjustableTextView(Context context) {
         super(context);
         init(context, null);
     }
 
-    public StretchableTextView(Context context, AttributeSet attrs) {
+    public AdjustableTextView(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(context, attrs);
     }
 
-    public StretchableTextView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public AdjustableTextView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(context, attrs);
     }
@@ -74,10 +74,10 @@ public class StretchableTextView extends android.support.v7.widget.AppCompatText
             testPaint.setTextSize(size);
             if (testPaint.measureText(text) >= maxWidth) {
                 hi = size; // too big
-                modifier = .5f;
+                modifier = .5f; //stretch
             } else {
                 lo = size; // too small
-                modifier = 2;
+                modifier = 2; //shrink
             }
         }
         // Use lo so that we undershoot rather than overshoot

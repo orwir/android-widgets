@@ -17,7 +17,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'me.tatarka.retrolambda'
 
 description '''\
-Stretchable views.\
+Adjustable views.\
 '''
 
 android {

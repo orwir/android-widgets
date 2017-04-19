@@ -1,1 +1,1 @@
-include ':app', ':expandable', ':stretch'
+include ':app', ':expandable', ':adjust'

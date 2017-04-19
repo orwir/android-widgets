@@ -42,7 +42,7 @@ dependencies {
     annotationProcessor lib.butterKnifeCompiler
 
     compile project(':expandable')
-    compile project(':stretch')
+    compile project(':adjust')
 
     compile lib.supportAppCompatV7
     compile lib.supportDesign

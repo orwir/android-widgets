@@ -14,10 +14,10 @@ import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import orwir.widget.example.AdjustableTextActivity;
 import orwir.widget.example.ExpandableLayoutActivity;
 import orwir.widget.example.MainActivity;
 import orwir.widget.example.R;
-import orwir.widget.example.StretchableTextActivity;
 
 public abstract class BaseActivity extends RxAppCompatActivity {
 
@@ -65,7 +65,7 @@ public abstract class BaseActivity extends RxAppCompatActivity {
                 .addDrawerItems(
                         MainActivity.DRAWER_ITEM,
                         ExpandableLayoutActivity.DRAWER_ITEM,
-                        StretchableTextActivity.DRAWER_ITEM
+                        AdjustableTextActivity.DRAWER_ITEM
                 )
                 .withOnDrawerNavigationListener(view -> {
                     onBackPressed();

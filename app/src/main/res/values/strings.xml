@@ -8,9 +8,9 @@
     <string name="expandable_block_3">Third Expandable block</string>
     <string name="enable_single_expanded">Enable single expanded</string>
 
-    <string name="stretchable_text_activity">Stretchable TextView</string>
+    <string name="adjustable_text_activity">Adjustable TextView</string>
     <string name="text_view">TextView</string>
-    <string name="stretchable_text_view">Custom StretchableTextView</string>
+    <string name="adjustable_text_view">AdjustableTextView</string>
     <string name="long_text_example">01234567890123456789</string>
 
 </resources>
