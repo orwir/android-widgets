@@ -8,20 +8,20 @@ import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import orwir.widget.example.common.ActivityItem;
 import orwir.widget.example.common.BaseActivity;
 
-public class StretchableTextActivity extends BaseActivity {
+public class AdjustableTextActivity extends BaseActivity {
 
     public static final PrimaryDrawerItem DRAWER_ITEM = new ActivityItem()
-            .withStartActivity(StretchableTextActivity::startActivity)
-            .withName(R.string.stretchable_text_activity);
+            .withStartActivity(AdjustableTextActivity::startActivity)
+            .withName(R.string.adjustable_text_activity);
 
     public static void startActivity(Context context) {
-        Intent intent = new Intent(context, StretchableTextActivity.class);
+        Intent intent = new Intent(context, AdjustableTextActivity.class);
         context.startActivity(intent);
     }
 
     @Override
     protected int getContentRes() {
-        return R.layout.activity_stretchable_text;
+        return R.layout.activity_adjustable_text;
     }
 
     @Override
