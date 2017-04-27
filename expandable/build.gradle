@@ -45,17 +45,11 @@ android {
 }
 
 dependencies {
-    annotationProcessor lib.butterKnifeCompiler
-
-    compile lib.supportAppCompatV7
-    compile lib.supportDesign
-
     compile lib.rxJava
     compile lib.rxAndroid
     compile lib.rxLifecycle
     compile lib.rxLifecycleAndroid
     compile lib.rxLifecycleComponents
-    compile lib.butterKnife
     compile lib.picasso
 }
 
