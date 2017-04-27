@@ -25,7 +25,11 @@
 
         <activity android:name=".AdjustableTextActivity"
                   android:label="@string/adjustable_text_activity"
-                  android:parentActivityName=".AdjustableTextActivity"/>
+                  android:parentActivityName=".MainActivity"/>
+
+        <activity android:name=".CarouselActivity"
+                  android:label="@string/carousel_activity"
+                  android:parentActivityName=".MainActivity"/>
 
     </application>
 
