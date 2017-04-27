@@ -20,23 +20,32 @@ allprojects {
 
 
 # ExpandableLayout
-![expandable preview](https://gifyu.com/images/expandable_layout.gif)
-
 Just a FrameLayout with header, expand/collapse functionality and written on RxAndroid and so on.
 ```groovy
 compile 'orwir.android.widget:expandable:latest_version'
 ```
+![expandable preview](https://gifyu.com/images/expandable_layout.gif)
+
 [Example layout](https://github.com/orwir/android-widgets/blob/master/app/src/main/res/layout/activity_expandable_layout.xml) and 
 [enable/disable single expanded func](https://github.com/orwir/android-widgets/blob/master/app/src/main/java/orwir/widget/example/ExpandableLayoutActivity.java#L48)
 
 # AdjustableTextView
-
-![shrink](https://i.snag.gy/zThBqw.jpg)
-![stretch](https://i.snag.gy/gREy4v.jpg)
-
 Just an adjustable TextView.
 ```groovy
 compile 'orwir.android.widget:adjust:latest_version'
 ```
 
+![shrink](https://i.snag.gy/zThBqw.jpg)
+![stretch](https://i.snag.gy/gREy4v.jpg)
+
 [Example layout](https://github.com/orwir/android-widgets/blob/master/app/src/main/res/layout/activity_adjustable_text.xml#L39)
+
+
+# CarouselView
+Just a carousel.
+```groovy
+compile 'orwir.android.widget:carousel:latest_version'
+```
+![carousel](https://gifyu.com/images/carouseld3d99.gif)
+
+[Example layout](https://github.com/orwir/android-widgets/blob/master/app/src/main/res/layout/activity_carousel.xml#L47)
