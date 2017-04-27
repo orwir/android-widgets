@@ -14,7 +14,7 @@ import orwir.widget.example.R;
 
 public class TestCarouselAdapter extends CarouselAdapter {
 
-    private List<Object> objects = new ArrayList<>();
+    private final List<Object> objects = new ArrayList<>();
     {
         objects.add(new Object());
         objects.add(new Object());
