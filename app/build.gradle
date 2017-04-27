@@ -22,7 +22,6 @@ android {
         targetSdkVersion app.targetSdkVersion
         versionCode app.versionCode
         versionName app.versionName
-        multiDexEnabled true
     }
 
     buildTypes {
