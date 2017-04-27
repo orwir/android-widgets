@@ -19,7 +19,7 @@ ext.app = [
         minSdkVersion     : 17,
         targetSdkVersion  : 23,
         versionCode       : 1,
-        versionName       : '1.1.0',
+        versionName       : '1.2.0',
         applicationId     : 'orwir.widget.example',
         groupId           : 'orwir.android.widget',
         url               : 'https://github.com/orwir/android-widgets'
@@ -33,31 +33,32 @@ allprojects {
 
 def version = [
         //compile time
-        retrolambda    : '3.4.0',
+        retrolambda      : '3.4.0',
 
         //google
-        support        : '25.0.1',
+        support          : '25.0.1',
+        constraintLayout : '1.0.2',
 
         //network
-        okhttp         : '3.4.2',
-        retrofit       : '2.1.0',
-        gson           : '2.8.0',
+        okhttp           : '3.4.2',
+        retrofit         : '2.1.0',
+        gson             : '2.8.0',
 
         //reactive
-        rxJava         : '1.2.3',
-        rxAndroid      : '1.2.1',
-        rxLifecycle    : '1.0',
-        rxBinding      : '0.4.0',
+        rxJava           : '1.2.3',
+        rxAndroid        : '1.2.1',
+        rxLifecycle      : '1.0',
+        rxBinding        : '0.4.0',
 
         //misc
-        timber         : '4.3.1',
-        picasso        : '2.5.2',
-        butterKnife    : '8.4.0',
-        materialDrawer : '5.8.1@aar',
+        timber           : '4.3.1',
+        picasso          : '2.5.2',
+        butterKnife      : '8.4.0',
+        materialDrawer   : '5.8.1@aar',
 
         //development tools
-        leakcanary     : '1.5',
-        junit          : '4.12'
+        leakcanary       : '1.5',
+        junit            : '4.12'
 ]
 
 ext.lib = [
@@ -72,6 +73,7 @@ ext.lib = [
         supportRecyclerViewV7   : "com.android.support:recyclerview-v7:$version.support",
         supportCardViewV7       : "com.android.support:cardview-v7:$version.support",
         supportDesign           : "com.android.support:design:$version.support",
+        constraintLayout        : "com.android.support.constraint:constraint-layout:$version.constraintLayout",
 
         //network
         okhttp                  : "com.squareup.okhttp3:okhttp:$version.okhttp",

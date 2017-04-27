@@ -6,8 +6,9 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.TypedValue;
+import android.widget.TextView;
 
-public class AdjustableTextView extends android.support.v7.widget.AppCompatTextView {
+public class AdjustableTextView extends TextView {
 
     private Paint testPaint = new Paint();
 

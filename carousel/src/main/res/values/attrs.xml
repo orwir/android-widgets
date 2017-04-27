@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CarouselView">
+        <attr name="layout" format="reference"/>
+    </declare-styleable>
+
+    <declare-styleable name="DotIndicator">
+        <attr name="radius" format="dimension"/>
+        <attr name="radiusCurrent" format="dimension"/>
+        <attr name="color" format="color"/>
+        <attr name="colorCurrent" format="color"/>
+    </declare-styleable>
+</resources>

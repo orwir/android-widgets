@@ -45,10 +45,7 @@ android {
 }
 
 dependencies {
-    annotationProcessor lib.butterKnifeCompiler
-
-    compile lib.supportAppCompatV7
-    compile lib.supportDesign
+    compile lib.supportAnnotations
 }
 
 apply from: "$rootDir/publishing.gradle"

@@ -18,6 +18,7 @@ import orwir.widget.example.AdjustableTextActivity;
 import orwir.widget.example.ExpandableLayoutActivity;
 import orwir.widget.example.MainActivity;
 import orwir.widget.example.R;
+import orwir.widget.example.carousel.CarouselActivity;
 
 public abstract class BaseActivity extends RxAppCompatActivity {
 
@@ -65,7 +66,8 @@ public abstract class BaseActivity extends RxAppCompatActivity {
                 .addDrawerItems(
                         MainActivity.DRAWER_ITEM,
                         ExpandableLayoutActivity.DRAWER_ITEM,
-                        AdjustableTextActivity.DRAWER_ITEM
+                        AdjustableTextActivity.DRAWER_ITEM,
+                        CarouselActivity.DRAWER_ITEM
                 )
                 .withOnDrawerNavigationListener(view -> {
                     onBackPressed();

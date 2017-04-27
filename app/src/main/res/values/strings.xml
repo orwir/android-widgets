@@ -2,6 +2,7 @@
     <string name="app_name">Android Widgets</string>
     <string name="hint_text">Just a main activity. Open the menu for examples</string>
     <string name="main_activity">Main</string>
+
     <string name="expandable_layout_activity">Expandable Layout</string>
     <string name="expandable_block_1">First Expandable block</string>
     <string name="expandable_block_2">Second Expandable block</string>
@@ -12,5 +13,10 @@
     <string name="text_view">TextView</string>
     <string name="adjustable_text_view">AdjustableTextView</string>
     <string name="long_text_example">01234567890123456789</string>
+
+    <string name="carousel_activity">Carousel</string>
+    <string name="header_text">Carousel header</string>
+    <string name="prev"><![CDATA[<<<]]></string>
+    <string name="next"><![CDATA[>>>]]></string>
 
 </resources>
