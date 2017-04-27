@@ -1,4 +1,4 @@
-package orwir.carousel.misc;
+package orwir.widget.carousel.misc;
 
 import android.content.Context;
 import android.view.animation.Interpolator;

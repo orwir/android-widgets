@@ -1,4 +1,4 @@
-package orwir.carousel.indicator;
+package orwir.widget.carousel.indicator;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -11,9 +11,9 @@ import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.util.AttributeSet;
 
-import orwir.carousel.R;
+import orwir.widget.carousel.R;
 
-import static orwir.carousel.misc.Utils.toPx;
+import static orwir.widget.carousel.misc.Utils.toPx;
 
 public class DotIndicator extends Indicator {
 

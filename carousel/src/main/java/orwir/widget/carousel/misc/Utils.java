@@ -1,4 +1,4 @@
-package orwir.carousel.misc;
+package orwir.widget.carousel.misc;
 
 import android.content.res.Resources;
 import android.util.TypedValue;

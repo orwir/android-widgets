@@ -1,4 +1,4 @@
-package orwir.carousel;
+package orwir.widget.carousel;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -14,20 +14,17 @@ import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
-import android.view.ViewStub;
 import android.widget.FrameLayout;
-import android.widget.TextView;
 
 import java.lang.reflect.Field;
 
-import orwir.carousel.indicator.Indicator;
-import orwir.carousel.misc.FixedSpeedScroller;
+import orwir.widget.carousel.indicator.Indicator;
+import orwir.widget.carousel.misc.FixedSpeedScroller;
 
 
 public class CarouselView extends FrameLayout {
 
     protected DataSetObserver dataSetObserver;
-    private TextView header;
     private ViewPager pager;
     private CarouselAdapter adapter;
     private Indicator indicator;
@@ -60,15 +57,11 @@ public class CarouselView extends FrameLayout {
         }
         this.adapter = adapter;
         pager.setAdapter(adapter);
+        onDataSetChanged();
         adapter.registerDataSetObserver(dataSetObserver = new DataSetObserver() {
             @Override
             public void onChanged() {
-                indicator.setCurrent(adapter.getRealCount());
-                pager.setCurrentItem(0, true);
-                if (adapter.getCount() > 0) {
-                    indicator.setCurrent(0);
-                    pager.setCurrentItem(adapter.getRealCount() * (CarouselAdapter.LOOP_COUNT / 2), false);
-                }
+                onDataSetChanged();
             }
         });
     }
@@ -99,28 +92,19 @@ public class CarouselView extends FrameLayout {
     }
 
     protected void init(@NonNull Context context, AttributeSet attrs) {
-        int layoutRes = R.layout.layout_carousel;
-        int indicatorRes = R.layout.dot_indicator;
-        String headerText = "";
+        int layoutRes = R.layout.default_carousel;
         if (attrs != null) {
             TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.CarouselView);
             try {
                 layoutRes = a.getResourceId(R.styleable.CarouselView_layout, layoutRes);
-                indicatorRes = a.getResourceId(R.styleable.CarouselView_indicator, indicatorRes);
-                headerText = a.getString(R.styleable.CarouselView_headerText);
             } finally {
                 a.recycle();
             }
         }
         LayoutInflater.from(context).inflate(layoutRes, this, true);
-        header = (TextView) findViewById(R.id.header);
         pager = (ViewPager) findViewById(R.id.pager);
-        ViewStub indicatorStub = (ViewStub) findViewById(R.id.indicator_stub);
-        indicatorStub.setLayoutResource(indicatorRes);
-        indicatorStub.inflate();
         indicator = (Indicator) findViewById(R.id.indicator);
         checkRequiredViews();
-        header.setText(headerText);
 
         pager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -148,6 +132,15 @@ public class CarouselView extends FrameLayout {
         invalidate();
     }
 
+    private void onDataSetChanged() {
+        indicator.setCount(adapter.getRealCount());
+        if (adapter.getCount() > 0) {
+            pager.setCurrentItem(0, true);
+            indicator.setCurrent(0);
+            pager.setCurrentItem(adapter.getRealCount() * (CarouselAdapter.LOOP_COUNT / 2), false);
+        }
+    }
+
     private void checkAdapter() {
         if (adapter == null) {
             throw new IllegalStateException("Adapter not set");
@@ -156,9 +149,6 @@ public class CarouselView extends FrameLayout {
 
     private void checkRequiredViews() {
         StringBuilder views = new StringBuilder();
-        if (header == null) {
-            views.append("header");
-        }
         if (pager == null) {
             if (views.length() > 0) {
                 views.append(", ");

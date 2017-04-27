@@ -1,4 +1,4 @@
-package orwir.carousel.indicator;
+package orwir.widget.carousel.indicator;
 
 import android.content.Context;
 import android.os.Build;

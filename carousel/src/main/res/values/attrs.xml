@@ -2,8 +2,6 @@
 <resources>
     <declare-styleable name="CarouselView">
         <attr name="layout" format="reference"/>
-        <attr name="headerText" format="string"/>
-        <attr name="indicator" format="reference"/>
     </declare-styleable>
 
     <declare-styleable name="DotIndicator">

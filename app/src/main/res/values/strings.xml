@@ -16,5 +16,7 @@
 
     <string name="carousel_activity">Carousel</string>
     <string name="header_text">Carousel header</string>
+    <string name="prev"><![CDATA[<<<]]></string>
+    <string name="next"><![CDATA[>>>]]></string>
 
 </resources>
