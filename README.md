@@ -46,6 +46,6 @@ Just a carousel.
 ```groovy
 compile 'orwir.android.widget:carousel:latest_version'
 ```
-![carousel](https://gifyu.com/images/carouseld3d99.gif)
+![carousel](https://gifyu.com/images/carouseldbba8.gif)
 
 [Example layout](https://github.com/orwir/android-widgets/blob/master/app/src/main/res/layout/activity_carousel.xml#L47)
