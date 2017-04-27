@@ -19,7 +19,7 @@ allprojects {
 ```
 
 
-#ExpandableLayout
+# ExpandableLayout
 ![expandable preview](https://gifyu.com/images/expandable_layout.gif)
 
 Just a FrameLayout with header, expand/collapse functionality and written on RxAndroid and so on.
@@ -29,3 +29,14 @@ compile 'orwir.android.widget:expandable:latest_version'
 [Example layout](https://github.com/orwir/android-widgets/blob/master/app/src/main/res/layout/activity_expandable_layout.xml) and 
 [enable/disable single expanded func](https://github.com/orwir/android-widgets/blob/master/app/src/main/java/orwir/widget/example/ExpandableLayoutActivity.java#L48)
 
+# AdjustableTextView
+
+![shrink](https://i.snag.gy/zThBqw.jpg)
+![stretch](https://i.snag.gy/gREy4v.jpg)
+
+Just an adjustable TextView.
+```groovy
+compile 'orwir.android.widget:adjust:latest_version'
+```
+
+[Example layout](https://github.com/orwir/android-widgets/blob/master/app/src/main/res/layout/activity_adjustable_text.xml#L39)
