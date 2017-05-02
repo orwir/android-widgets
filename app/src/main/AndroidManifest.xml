@@ -2,6 +2,7 @@
           package="orwir.widget.example">
 
     <application
+        android:name=".ExamplesApplication"
         android:allowBackup="true"
         android:fullBackupContent="false"
         android:icon="@mipmap/ic_launcher"
