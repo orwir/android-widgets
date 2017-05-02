@@ -50,6 +50,7 @@ dependencies {
     compile lib.supportRecyclerViewV7
     compile lib.supportCardViewV7
 
+    compile lib.timber
     compile lib.rxAndroid
     compile lib.rxLifecycle
     compile lib.rxLifecycleAndroid

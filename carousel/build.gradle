@@ -46,7 +46,6 @@ android {
 
 dependencies {
     compile lib.supportAppCompatV7
-    compile lib.timber
 }
 
 apply from: "$rootDir/publishing.gradle"
