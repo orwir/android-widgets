@@ -22,7 +22,9 @@ public abstract class CarouselAdapter extends PagerAdapter {
 
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
-        container.removeView((View) object);
+        if (object instanceof View) {
+            container.removeView((View) object);
+        }
     }
 
 }

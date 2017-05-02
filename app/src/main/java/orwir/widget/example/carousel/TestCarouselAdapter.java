@@ -9,10 +9,12 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-import orwir.widget.carousel.CarouselAdapter;
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import orwir.widget.carousel.HoldableCarouselAdapter;
 import orwir.widget.example.R;
 
-public class TestCarouselAdapter extends CarouselAdapter {
+public class TestCarouselAdapter extends HoldableCarouselAdapter<TestCarouselAdapter.TestHolder> {
 
     private final List<Object> objects = new ArrayList<>();
     {
@@ -29,13 +31,24 @@ public class TestCarouselAdapter extends CarouselAdapter {
     }
 
     @Override
-    public Object instantiateItem(ViewGroup container, int position) {
-        View view = LayoutInflater.from(container.getContext()).inflate(R.layout.item_carousel, container, false);
-        view.setTag(position);
-        container.addView(view);
-        TextView text = (TextView) view.findViewById(R.id.text);
-        text.setText("Item #" + position % getRealCount());
-        return view;
+    protected TestHolder onCreateViewHolder(ViewGroup parent) {
+        return new TestHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_carousel, parent, false));
+    }
+
+    @Override
+    protected void onBindViewHolder(TestHolder holder, int position) {
+        holder.text.setText("Item #" + position % getRealCount());
+    }
+
+    class TestHolder extends HoldableCarouselAdapter.ViewHolder {
+
+        @BindView(R.id.text) TextView text;
+
+        public TestHolder(View itemView) {
+            super(itemView);
+            ButterKnife.bind(this, itemView);
+        }
+
     }
 
 }
