@@ -1,1 +1,1 @@
-include ':app', ':expandable', ':adjust', ':carousel'
+include ':app', ':expandable', ':adjust', ':carousel', ':progress'

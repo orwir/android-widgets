@@ -21,7 +21,7 @@ public abstract class HoldableCarouselAdapter<VH extends HoldableCarouselAdapter
         if (holder == null) {
             holder = onCreateViewHolder(container);
         }
-        onBindViewHolder(holder, position);
+        onBindViewHolder(holder, position % getRealCount());
         container.addView(holder.itemView);
         return holder.itemView;
     }
