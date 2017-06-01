@@ -14,12 +14,12 @@ buildscript {
 }
 
 ext.app = [
-        compileSdkVersion : 23,
+        compileSdkVersion : 24,
         buildToolsVersion : '25.0.1',
         minSdkVersion     : 17,
-        targetSdkVersion  : 23,
+        targetSdkVersion  : 25,
         versionCode       : 1,
-        versionName       : '1.3.0',
+        versionName       : '1.4.0',
         applicationId     : 'orwir.widget.example',
         groupId           : 'orwir.android.widget',
         url               : 'https://github.com/orwir/android-widgets'
@@ -45,10 +45,10 @@ def version = [
         gson             : '2.8.0',
 
         //reactive
-        rxJava           : '1.2.3',
-        rxAndroid        : '1.2.1',
-        rxLifecycle      : '1.0',
-        rxBinding        : '0.4.0',
+        rxJava           : '2.1.0',
+        rxAndroid        : '2.0.1',
+        rxLifecycle      : '2.1.0',
+        rxBinding        : '2.0.0',
 
         //misc
         timber           : '4.3.1',
@@ -84,16 +84,16 @@ ext.lib = [
         gson                    : "com.google.code.gson:gson:$version.gson",
 
         //reactive
-        rxJava                  : "io.reactivex:rxjava:$version.rxJava",
-        rxAndroid               : "io.reactivex:rxandroid:$version.rxAndroid",
-        rxBinding               : "com.jakewharton.rxbinding:rxbinding:$version.rxBinding",
-        rxBindingSupportV4      : "com.jakewharton.rxbinding:rxbinding-support-v4:$version.rxBinding",
-        rxBindingAppCompatV7    : "com.jakewharton.rxbinding:rxbinding-appcompat-v7:$version.rxBinding",
-        rxBindingDesign         : "com.jakewharton.rxbinding:rxbinding-design:$version.rxBinding",
-        rxBindingRecyclerViewV7 : "com.jakewharton.rxbinding:rxbinding-recyclerview-v7:$version.rxBinding",
-        rxLifecycle             : "com.trello:rxlifecycle:$version.rxLifecycle",
-        rxLifecycleAndroid      : "com.trello:rxlifecycle-android:$version.rxLifecycle",
-        rxLifecycleComponents   : "com.trello:rxlifecycle-components:$version.rxLifecycle",
+        rxJava                  : "io.reactivex.rxjava2:rxjava:$version.rxJava",
+        rxAndroid               : "io.reactivex.rxjava2:rxandroid:$version.rxAndroid",
+        rxBinding               : "com.jakewharton.rxbinding2:rxbinding:$version.rxBinding",
+        rxBindingSupportV4      : "com.jakewharton.rxbinding2:rxbinding-support-v4:$version.rxBinding",
+        rxBindingAppCompatV7    : "com.jakewharton.rxbinding2:rxbinding-appcompat-v7:$version.rxBinding",
+        rxBindingDesign         : "com.jakewharton.rxbinding2:rxbinding-design:$version.rxBinding",
+        rxBindingRecyclerViewV7 : "com.jakewharton.rxbinding2:rxbinding-recyclerview-v7:$version.rxBinding",
+        rxLifecycle             : "com.trello.rxlifecycle2:rxlifecycle:$version.rxLifecycle",
+        rxLifecycleAndroid      : "com.trello.rxlifecycle2:rxlifecycle-android:$version.rxLifecycle",
+        rxLifecycleComponents   : "com.trello.rxlifecycle2:rxlifecycle-components:$version.rxLifecycle",
 
         //misc
         timber                  : "com.jakewharton.timber:timber:$version.timber",

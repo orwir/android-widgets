@@ -20,24 +20,24 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.trello.rxlifecycle.android.ActivityEvent;
-import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
+import com.trello.rxlifecycle2.android.ActivityEvent;
+import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import io.reactivex.Observable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Function;
+import io.reactivex.subjects.BehaviorSubject;
 import orwir.widget.expandable.R;
 import orwir.widget.expandable.util.AnimUtils;
-import rx.Observable;
-import rx.Subscription;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Func1;
-import rx.subjects.BehaviorSubject;
 
 public class ExpandableLayout extends FrameLayout {
 
-    public static Subscription singleExpanded(RxAppCompatActivity context, ViewGroup root, boolean nested) {
+    public static Disposable singleExpanded(RxAppCompatActivity context, ViewGroup root, boolean nested) {
         List<ExpandableLayout> layouts = new ArrayList<>();
         searchExpandableLayouts(root, layouts, nested);
         return Observable.merge(transform(layouts, ExpandableLayout::expandedEvent))
@@ -63,10 +63,14 @@ public class ExpandableLayout extends FrameLayout {
         }
     }
 
-    private static <IN, OUT> List<OUT> transform(@NonNull Collection<IN> source, @NonNull Func1<IN, OUT> transformer) {
+    private static <IN, OUT> List<OUT> transform(@NonNull Collection<IN> source, @NonNull Function<IN, OUT> transformer) {
         List<OUT> result = new ArrayList<>(source.size());
         for (IN val : source) {
-            result.add(transformer.call(val));
+            try {
+                result.add(transformer.apply(val));
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
         }
         return result;
     }

@@ -5,20 +5,24 @@ import android.support.annotation.Nullable;
 
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 
-import rx.functions.Action1;
+import io.reactivex.functions.Consumer;
 
 public class ActivityItem extends PrimaryDrawerItem {
 
-    private @Nullable Action1<Context> startActivity;
+    private @Nullable Consumer<Context> startActivity;
 
-    public ActivityItem withStartActivity(Action1<Context> action) {
+    public ActivityItem withStartActivity(Consumer<Context> action) {
         startActivity = action;
         return this;
     }
 
     public void startActivity(Context context) {
         if (startActivity != null) {
-            startActivity.call(context);
+            try {
+                startActivity.accept(context);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 

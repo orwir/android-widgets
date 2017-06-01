@@ -10,10 +10,10 @@ import android.view.ViewGroup;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 
 import butterknife.OnCheckedChanged;
+import io.reactivex.disposables.Disposable;
 import orwir.widget.example.common.ActivityItem;
 import orwir.widget.example.common.BaseActivity;
 import orwir.widget.expandable.layout.ExpandableLayout;
-import rx.Subscription;
 
 public class ExpandableLayoutActivity extends BaseActivity {
 
@@ -21,7 +21,7 @@ public class ExpandableLayoutActivity extends BaseActivity {
             .withStartActivity(ExpandableLayoutActivity::startActivity)
             .withName(R.string.expandable_layout_activity);
 
-    private Subscription singleExpandedSubscription;
+    private Disposable singleExpandedSubscription;
 
     public static void startActivity(Context context) {
         Intent intent = new Intent(context, ExpandableLayoutActivity.class);
@@ -49,7 +49,7 @@ public class ExpandableLayoutActivity extends BaseActivity {
         if (checked && singleExpandedSubscription == null) {
             singleExpandedSubscription = ExpandableLayout.singleExpanded(this, (ViewGroup) findViewById(android.R.id.content), true);
         } else if (!checked && singleExpandedSubscription != null) {
-            singleExpandedSubscription.unsubscribe();
+            singleExpandedSubscription.dispose();
             singleExpandedSubscription = null;
         }
     }
