@@ -19,7 +19,7 @@ ext.app = [
         minSdkVersion     : 17,
         targetSdkVersion  : 25,
         versionCode       : 1,
-        versionName       : '1.4.0',
+        versionName       : '1.4.1',
         applicationId     : 'orwir.widget.example',
         groupId           : 'orwir.android.widget',
         url               : 'https://github.com/orwir/android-widgets'

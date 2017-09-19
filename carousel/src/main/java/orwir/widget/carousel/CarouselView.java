@@ -139,6 +139,9 @@ public class CarouselView extends FrameLayout {
             indicator.setCurrent(0);
             pager.setCurrentItem(adapter.getRealCount() * (CarouselAdapter.LOOP_COUNT / 2), false);
         }
+        if (adapter.getRealCount() <= 1) {
+            indicator.setVisibility(GONE);
+        }
     }
 
     private void checkAdapter() {
